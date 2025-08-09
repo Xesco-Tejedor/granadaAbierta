@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Granada Abierta: Sangre, Semilla y Renacimiento Mediterráneo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --granada-rojo: #c41e3a;
+            --granada-oscuro: #8b0000;
+            --granada-semilla: #e63946;
+            --mediterraneo-azul: #0077be;
+            --tierra: #d4a373;
+            --verde-olivo: #6a994e;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            background-color: #f8f5f0;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f8f5f0" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        h2 {
+            color: var(--granada-rojo);
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--granada-rojo);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            color: var(--granada-oscuro);
+            font-size: 1.6rem;
+            margin-top: 30px;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .bg-light {
+            background-color: #f8f5f0 !important;
+        }
+        
+        .bg-mediterraneo {
+            background-color: #e6f2ff;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background-color: var(--granada-rojo);
+            color: white;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0 !important;
+            padding: 15px;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .ritual-step {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .ritual-step::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background-color: var(--granada-rojo);
+        }
+        
+        .ritual-step-number {
+            position: absolute;
+            left: -15px;
+            top: -5px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--granada-rojo);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .symbol-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .symbol-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--granada-rojo);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .btn-granada {
+            background-color: var(--granada-rojo);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-granada:hover {
+            background-color: var(--granada-oscuro);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .img-seed {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 4px solid var(--granada-rojo);
+        }
+        
+        .quote {
+            font-style: italic;
+            border-left: 4px solid var(--granada-rojo);
+            padding-left: 20px;
+            margin: 30px 0;
+            color: #555;
+        }
+        
+        .footer {
+            background-color: var(--granada-oscuro);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .culinary-item {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .culinary-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--mediterraneo-azul);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .installation-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .installation-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .installation-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .installation-content {
+            padding: 20px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 4px;
+            background: var(--granada-rojo);
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--granada-rojo);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>La Granada Abierta</h1>
+            <p class="lead">Sangre, Semilla y Renacimiento Mediterráneo</p>
+            <p class="mt-4">Un viaje ritualístico a través del simbolismo ancestral y la transformación contemporánea</p>
+        </div>
+    </div>
+
+    <!-- Introducción -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-center">Un Cosmos Mediterráneo</h2>
+                    <p>La granada, símbolo ancestral presente en mitos griegos, la Biblia, el Corán y la tradición catalana, se despliega en esta propuesta como un cosmos mediterráneo que encapsula ciclos de vida, muerte y renacimiento. Más que un fruto, es un archivo de posibilidades que revela su arquitectura interna a través de un ritual contemporáneo.</p>
+                    
+                    <div class="symbol-item">
+                        <div class="symbol-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div>
+                            <h4>Triple descomposición simbólica</h4>
+                            <p>Piel (protección), Arilos (vida), Semillas (memoria)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="symbol-item">
+                        <div class="symbol-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Ciclo completo</h4>
+                            <p>De flor a fruto, de fruto a semilla, de semilla a árbol</p>
+                        </div>
+                    </div>
+                    
+                    <div class="symbol-item">
+                        <div class="symbol-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div>
+                            <h4>Transformación ritual</h4>
+                            <p>Un proceso que hace visible lo invisible a través de gestos conscientes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso Ritual -->
+    <section class="section bg-mediterraneo">
+        <div class="container">
+            <h2 class="text-center">El Ritual de la Apertura</h2>
+            <p class="text-center mb-5">Hacer visible lo invisible a través de un acto ceremonial contemporáneo</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="ritual-step">
+                        <div class="ritual-step-number">1</div>
+                        <h3>La Incisión Inicial</h3>
+                        <p>En un acto ritual, se corta la corona de la granada con un cuchillo de plata, inspirado en cuchillos rituales mediterráneos. Al abrirla, lo invisible —su arquitectura interna de cientos de semillas— se expone ante el público.</p>
+                        <div class="quote">
+                            "Lo que parece un fruto cerrado revela un cosmos ordenado, un universo de posibilidades contenidas en su interior."
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="ritual-step">
+                        <div class="ritual-step-number">2</div>
+                        <h3>Separación Consciente</h3>
+                        <p>Los participantes extraen manualmente los arilos (para transformación culinaria), las semillas (limpiadas para arte) y la piel (curtida para artesanía). Cada gesto es una metáfora del desvelamiento: lo que parece una fruta es un archivo de posibilidades.</p>
+                        <div class="quote">
+                            "Cada elemento de la granada contiene un potencial transformador que solo se libera a través de la acción consciente."
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Granada abierta" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </section>
+
+    <!-- El Abalorio -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="text-center">El Abalorio: Semilla como Memoria Mediterránea</h2>
+            <p class="text-center mb-5">Transformación de la semilla en objeto de memoria y arte contemporáneo</p>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Técnica Ancestral</h3>
+                    <p>Las semillas se deshidratan lentamente utilizando métodos romanos y se perforan con agujas de hueso de olivo, una técnica fenicia. Se tiñen con:</p>
+                    <ul>
+                        <li>Carmín natural (cochinilla + granada, para tonos rojos sangre)</li>
+                        <li>Azul añil (índigo + alumbre, evocando el Mediterráneo oriental)</li>
+                    </ul>
+                    <p>Cada semilla se convierte en un "abalorio-memoria" que encapsula el ciclo vital de la granada y la historia mediterránea.</p>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h3>Creación Contemporánea</h3>
+                    <div class="installation-card">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Collar de semillas" class="installation-img">
+                        <div class="installation-content">
+                            <h4>Collares-Constelación</h4>
+                            <p>Hilos de semillas forman las Pléyades, estrella clave en la navegación mediterránea, conectando el fruto con el cosmos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="installation-card">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Instalación sonora" class="installation-img">
+                        <div class="installation-content">
+                            <h4>Instalación Sonora</h4>
+                            <p>Semillas insertadas en campanas de vidrio soplado; al moverse, suenan como "lluvia mediterránea", creando una experiencia multisensorial.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artificio Culinario y Creativo -->
+    <section class="section bg-mediterraneo">
+        <div class="container">
+            <h2 class="text-center">Crecimiento del Artificio Culinario con el Artificio Creativo</h2>
+            <p class="text-center mb-5">Transformación integral de la granada en experiencias gastronómicas y artísticas</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Artificio Culinario</h3>
+                    
+                    <div class="culinary-item">
+                        <div class="culinary-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div>
+                            <h4>Reducción de granada</h4>
+                            <p>Para platos de cordero o postres, como en la cocina árabe-catalana tradicional.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="culinary-item">
+                        <div class="culinary-icon">
+                            <i class="fas fa-candy-cane"></i>
+                        </div>
+                        <div>
+                            <h4>Arilos confitados</h4>
+                            <p>Cristalizados con miel de romero, recuperando una técnica greco-romana.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="culinary-item">
+                        <div class="culinary-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div>
+                            <h4>Zumo como pintura</h4>
+                            <p>El jugo oxidado se usa para dibujar en pergamino, evocando tintes medievales.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h4>Menú Degustación: "Sabor Abierto"</h4>
+                        <p>En colaboración con chefs catalanes de renombre, se ofrece un menú en tres actos que transforma la granada en experiencias culinarias de vanguardia:</p>
+                        <ul>
+                            <li>Entrante: Espuma de zumo de granada con queso de cabra de la Garrotxa</li>
+                            <li>Plato principal: Cordero confitado con reducción de granada y hierbas del Montseny</li>
+                            <li>Postre: Arilos confitados con miel de romero, presentados como joyas comestibles</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h3>Artificio Creativo</h3>
+                    
+                    <div class="culinary-item">
+                        <div class="culinary-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div>
+                            <h4>Piel-Cuero</h4>
+                            <p>Las cortezas se curten con sal marina y vinagre de vino (método fenicio), convirtiéndose en bolsos, portarrollos o cubiertas para libros de artista.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="culinary-item">
+                        <div class="culinary-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <div>
+                            <h4>Flor de Granada</h4>
+                            <p>Las flores secas se reducen a polvo y se mezclan con resina para crear esculturas translúcidas que simulan "lágrimas de granada".</p>
+                        </div>
+                    </div>
+                    
+                    <div class="culinary-item">
+                        <div class="culinary-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <div>
+                            <h4>Instalación "Corazón de Granada"</h4>
+                            <p>Una escultura suspendida de vidrio soplado transparente que contiene cientos de semillas de granada preservadas en resina biológica, iluminada desde su interior.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h4>Instalación "Piel y Memoria"</h4>
+                        <p>Pieles de granada curtidas se transforman en paneles translúcidos que sirven como lienzos para proyecciones de videoarte, creando un diálogo entre la artesanía tradicional y el arte contemporáneo.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Arte culinario con granada" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </section>
+
+    <!-- Lo Ancestral como Sustrato Vivo -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="text-center">Lo Ancestral como Sustrato Vivo</h2>
+            <p class="text-center mb-5">Rituales y saberes que conectan el presente con la memoria mediterránea</p>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Ritual de Inauguración</h3>
+                    <p>Un poeta-mago recita fragmentos del "Libro de la Granada" (poemas de Ibn Hazm, Ausiàs March, y versos populares catalanes) mientras abre una granada sobre una fuente de agua. Las semillas caen como "lluvia roja", simbolizando la fertilidad del conocimiento.</p>
+                    
+                    <div class="quote">
+                        "En la inauguración, un chef realiza una 'deconstrucción' en directo de una granada, transformándola en un plato efímero servido al público, mientras un laudista catalán acompaña el momento con música en vivo."
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h3>Saberes en Acción</h3>
+                    <ul>
+                        <li>Artesanos griegos enseñan a teñir lana con piel de granada.</li>
+                        <li>Cocineros de la Alhambra preparan pinchos de granada y queso de cabra (receta andalusí).</li>
+                        <li>Taller "Pintura con Granada": Los participantes aprenden a usar el zumo oxidado como tinta comestible.</li>
+                    </ul>
+                    
+                    <h3>Simbología Cíclica</h3>
+                    <p>La exposición se monta en un laberinto (como el de Creta): comienza con una granada entera y termina con semillas plantadas en macetas de barro fenicio, listas para renacer. Este recorrido simbólico invita al visitante a experimentar el ciclo completo de transformación.</p>
+                </div>
+            </div>
+            
+            <div class="timeline mt-5">
+                <div class="timeline-item left">
+                    <h4>Revelación</h4>
+                    <p>El visitante abre una granada, descubriendo su arquitectura interna.</p>
+                </div>
+                
+                <div class="timeline-item right">
+                    <h4>Transformación</h4>
+                    <p>Extrae semillas y participa en su transformación en objetos artísticos.</p>
+                </div>
+                
+                <div class="timeline-item left">
+                    <h4>Apropiación</h4>
+                    <p>Teje un hilo en un telar fenicio, llevando consigo una parte de la experiencia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Síntesis -->
+    <section class="section bg-mediterraneo">
+        <div class="container">
+            <h2 class="text-center">Síntesis: Crecimiento Consciente y Belleza Compleja</h2>
+            <p class="text-center mb-5">El público como iniciado en un ritual de transformación</p>
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3>El Público como Iniciado</h3>
+                    <p>Los visitantes no son espectadores pasivos, sino participantes activos en un ritual de transformación:</p>
+                    <ol>
+                        <li><strong>Abren una granada</strong> (revelación de lo oculto)</li>
+                        <li><strong>Extraen semillas</strong> (transformación consciente)</li>
+                        <li><strong>Tejen un hilo</strong> (apropiación de la experiencia)</li>
+                    </ol>
+                    
+                    <div class="quote mt-4">
+                        "El reciclaje de pieles o semillas no es un fin, sino una consecuencia de entender que la granada no se desperdicia: se transmuta."
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Sin Modas, con Esencia
+                        </div>
+                        <div class="card-body">
+                            <p>Lo profundo de esta propuesta radica en su vínculo con:</p>
+                            <ul>
+                                <li><strong>La sangre</strong> (vida, flujo, vitalidad)</li>
+                                <li><strong>La semilla</strong> (memoria, potencial, continuidad)</li>
+                                <li><strong>La piel</strong> (protección, envoltura ritual)</li>
+                            </ul>
+                            <p>Esta trinidad simbólica se manifiesta en cada fase del proyecto, creando una experiencia que trasciende lo efímero para conectar con lo esencial del Mediterráneo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Semillas de granada" class="img-fluid rounded-circle img-seed">
+            </div>
+        </div>
+    </section>
+
+    <!-- Información Práctica -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="text-center">Información Práctica</h2>
+            
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-calendar-alt fa-3x mb-3" style="color: var(--granada-rojo);"></i>
+                            <h4>Fechas</h4>
+                            <p>Del 1 al 30 de noviembre de 2025</p>
+                            <p>Sesiones diarias de talleres y degustaciones</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: var(--granada-rojo);"></i>
+                            <h4>Ubicación</h4>
+                            <p>CCAM - Centro de Cultura Contemporánea</p>
+                            <p>Espacio de 150-200 m² adaptado para la exposición</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-users fa-3x mb-3" style="color: var(--granada-rojo);"></i>
+                            <h4>Aforo</h4>
+                            <p>30-50 personas por sesión de taller o degustación</p>
+                            <p>Máximo de 200 visitantes diarios</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <button class="btn btn-granada btn-lg">Reserva tu experiencia</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>La Granada Abierta</h4>
+                    <p>Un proyecto que fusiona arte, gastronomía y tradición mediterránea</p>
+                </div>
+                
+                <div class="col-md-3">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Sobre el proyecto</a></li>
+                        <li><a href="#">Artistas colaboradores</a></li>
+                        <li><a href="#">Programación</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@lagranadaabierta.es</li>
+                        <li><i class="fas fa-phone"></i> +34 900 123 456</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="mt-4 mb-4" style="background-color: rgba(255,255,255,0.2);">
+            
+            <div class="text-center">
+                <p>&copy; 2025 La Granada Abierta. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animación suave al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.card, .ritual-step, .culinary-item, .timeline-item').forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
